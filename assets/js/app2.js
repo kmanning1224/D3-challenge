@@ -63,7 +63,7 @@ d3.csv("assets/data/data.csv")
   .append("text")
   .attr("x", i => xLinearScale(i.obesity))
   .attr("y", i => yLinearScale(i.healthcare))
-  .style("font-size", "15px")
+  .style("font-size", "10px")
   .style("text-align", "circle")
   .style("background-color", "white")
   .style("fill", "black")
@@ -72,12 +72,12 @@ d3.csv("assets/data/data.csv")
   //create tool tip
   let toolTip = d3.tip()
   .attr("class", "tooltip")
-  .style("position", "center")
   .offset([80, -60])
+  .style("background-color", "white")
   .html(function(i) {
     return (`${i.state}<hr> Income (Average) : $ ${i.income} <br> <br> Healthcare (%): ${i.healthcare}`)
   });
-  circlesGroup.call(toolTip);
+  circletext.call(toolTip);
 
   //mousover event
   circletext.on("mouseover", function(data){
@@ -85,7 +85,7 @@ d3.csv("assets/data/data.csv")
   })
 
   .on("mouseout", function(data, index) {
-    toolTip.hide(data)
+    toolTip.hide(index)
   });
 
   //axis labels
